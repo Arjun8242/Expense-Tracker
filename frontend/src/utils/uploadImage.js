@@ -8,14 +8,10 @@ const uploadImage = async (imageFile) => {
 
   try {
     const response = await axiosInstance.post(
-      API_PATHS.IMAGE.UPLOAD_IMAGE,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data", // Set header for file upload
-        },
-      }
-    );
+  API_PATHS.IMAGE.UPLOAD_IMAGE,
+  formData
+);
+
 
     return response.data; // Return response data
   } catch (error) {

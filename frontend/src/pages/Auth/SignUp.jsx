@@ -56,7 +56,7 @@ const SignUp = () => {
     const {token, user} = response.data;
 
     if(token){
-      localStorage.setItem("token", token);
+      sessionStorage.setItem("token", token);
       updateUser(user);
       navigate("/dashboard");
     }
@@ -109,7 +109,7 @@ const SignUp = () => {
             </div>
           </div>
 
-          {error && <p className="text-green-500 text-xs pb-2.5">{error}</p>}
+          {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
 
           <button
   type="submit"

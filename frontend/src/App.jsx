@@ -34,7 +34,7 @@ const App = () => {
 };
 
 const Root = () => {
-  const isAuthenticated = !!localStorage.getItem("token"); // Replace with your authentication logic
+  const isAuthenticated = !!sessionStorage.getItem("token"); // Replace with your authentication logic
 
   return isAuthenticated ? (
     <Navigate to="/dashboard" />

@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem("token"); // make sure key matches
+    const accessToken = sessionStorage.getItem("token"); // make sure key matches
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
