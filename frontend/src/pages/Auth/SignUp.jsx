@@ -16,25 +16,30 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setLoading(true); 
 
     let profileImageUrl = "";
 
     if (!fullName) {
       setError("Full name is required");
+      setLoading(false);
       return;
     }
     if (!validateEmail(email)) {
       setError("Invalid email format");
+      setLoading(false);
       return;
     }
     if (!password) {
       setError("Password is required");
+      setLoading(false);
       return;
     }
 
@@ -53,7 +58,8 @@ const SignUp = () => {
         password,
         profileImageUrl
     });
-    const {token, user} = response.data;
+    const { user } = response.data;
+const token = user.token;
 
     if(token){
       sessionStorage.setItem("token", token);
@@ -111,12 +117,16 @@ const SignUp = () => {
 
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
 
-          <button
+         <button
   type="submit"
-  className="w-full py-2 px-4 mt-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+  disabled={loading} // disables while loading
+  className={`w-full py-2 px-4 mt-4 bg-green-500 text-white font-semibold rounded-lg shadow-md 
+    hover:bg-green-600 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50
+    ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
 >
-  SIGN UP
+  {loading ? "Signing Up..." : "SIGN UP"}  {/* shows loading text */}
 </button>
+
 
           <p className="text-[13px] text-slate-800 mt-3">
             Already have an account?{" "}
