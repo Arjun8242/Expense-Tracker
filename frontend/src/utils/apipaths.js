@@ -9,12 +9,19 @@ export const API_PATHS = {
     DASHBOARD :{
         GET_DATA : "/api/v1/dashboard"
     },
+    // INCOME: {
+    //     ADD_INCOME : "/api/v1/income/add",
+    //     GET_ALL_INCOME : (page = 1, searchQuery = "") => `/api/v1/income/get?page=${page}&searchQuery=${searchQuery}`,
+    //     DELETE_INCOME :(incomeId) => `/api/v1/income/${incomeId}`,
+    //     DOWNLOAD_INCOME:"/api/v1/income/downloadexcel"
+    // },
     INCOME: {
-        ADD_INCOME : "/api/v1/income/add",
-        GET_ALL_INCOME : "/api/v1/income/get",
-        DELETE_INCOME :(incomeId) => `/api/v1/income/${incomeId}`,
-        DOWNLOAD_INCOME:"/api/v1/income/downloadexcel"
-    },
+        ADD_INCOME: "/api/v1/income/add",
+        GET_ALL_INCOME: "/api/v1/income/get",
+        DELETE_INCOME: (incomeId) => `/api/v1/income/${incomeId}`,
+        DOWNLOAD_INCOME: "/api/v1/income/downloadexcel",
+        },
+
     EXPENSE: {
         ADD_EXPENSE : "/api/v1/expense/add",
         GET_ALL_EXPENSE : "/api/v1/expense/get",

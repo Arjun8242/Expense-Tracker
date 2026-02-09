@@ -28,3 +28,5 @@ backend/.env
 # Others
 uploads/
 coverage/
+
+backend/Incomes.xlsx

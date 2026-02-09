@@ -1,6 +1,7 @@
 const Income = require("../models/Income");
 const Expense = require("../models/Expense");
 const { Types } = require("mongoose");
+const logger = require("../utils/logger");
 
 exports.getDashboardData = async (req, res) => {
   try {
@@ -66,7 +67,7 @@ exports.getDashboardData = async (req, res) => {
       recentTransactions: lastTransactions,
     });
   } catch (error) {
-    console.error("Dashboard Error:", error);
+    logger.error("Dashboard Error:", error);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 };
