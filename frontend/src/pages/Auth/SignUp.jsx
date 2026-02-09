@@ -59,7 +59,7 @@ const SignUp = () => {
         profileImageUrl
     });
     const { user } = response.data;
-const token = user.token;
+    const token = user.token;
 
     if(token){
       sessionStorage.setItem("token", token);

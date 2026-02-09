@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const logger = require("../utils/logger");
 
 const generateToken = (id) =>{
     return jwt.sign({id}, process.env.JWT_SECRET, {
@@ -40,7 +41,7 @@ exports.registerUser = async (req, res) => {
             },
         });
     } catch (error) {
-        console.error("Error registering user:", error);
+        logger.error("Error registering user:", error);
         res.status(500).json({message: "Server error"});
     }
 }
@@ -62,7 +63,7 @@ exports.loginUser = async (req, res) => {
             token: generateToken(user._id)
         });
     } catch (error) {
-        console.error("Error logging in user:", error);
+        logger.error("Error logging in user:", error);
         res.status(500).json({message: "Server error"});
         
     }
@@ -78,7 +79,7 @@ exports.getUserInfo = async (req, res) => {
         res.status(200).json(user);
         
     } catch (error) {
-        console.error("Error fetching user info:", error);
+        logger.error("Error fetching user info:", error);
         res.status(500).json({message: "Server error"});
         
     }
